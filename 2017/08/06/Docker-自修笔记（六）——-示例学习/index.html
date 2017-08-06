@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/8 | Hexo</title>
+  <title>Docker 自修笔记（六）—— 示例学习 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2017/08/index.html">
+  <meta name="description" content="本博客为JDGan自修Docker的笔记，如有粗鄙之处，还请见谅～ 阅读本博客前，请确定了解了以前的blog：Docker 自修笔记（五） Docker的数据管理Data volumes（数据卷）Data volumes 是一种特别设计的目录，绕开了联合文件系统。  Volumes在容器创建时就初始化，如果容器的父映像包含指定的挂载点上的数据，则在卷初始化时将现有数据复制到新卷中。 数据卷可以被容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 自修笔记（六）—— 示例学习">
+<meta property="og:url" content="http://yoursite.com/2017/08/06/Docker-自修笔记（六）——-示例学习/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本博客为JDGan自修Docker的笔记，如有粗鄙之处，还请见谅～ 阅读本博客前，请确定了解了以前的blog：Docker 自修笔记（五） Docker的数据管理Data volumes（数据卷）Data volumes 是一种特别设计的目录，绕开了联合文件系统。  Volumes在容器创建时就初始化，如果容器的父映像包含指定的挂载点上的数据，则在卷初始化时将现有数据复制到新卷中。 数据卷可以被容">
+<meta property="og:updated_time" content="2017-08-06T02:37:49.960Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Docker 自修笔记（六）—— 示例学习">
+<meta name="twitter:description" content="本博客为JDGan自修Docker的笔记，如有粗鄙之处，还请见谅～ 阅读本博客前，请确定了解了以前的blog：Docker 自修笔记（五） Docker的数据管理Data volumes（数据卷）Data volumes 是一种特别设计的目录，绕开了联合文件系统。  Volumes在容器创建时就初始化，如果容器的父映像包含指定的挂载点上的数据，则在卷初始化时将现有数据复制到新卷中。 数据卷可以被容">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -149,307 +153,196 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Docker-自修笔记（六）——-示例学习" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Docker 自修笔记（六）—— 示例学习
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/06/Docker-自修笔记（六）——-示例学习/" class="archive-article-date">
+
+        
+        <a href="/2017/08/06/Docker-自修笔记（六）——-示例学习/" class="archive-article-date">
   	<time datetime="2017-08-06T02:37:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-06</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/06/Docker-自修笔记（六）——-示例学习/">Docker 自修笔记（六）—— 示例学习</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本博客为JDGan自修Docker的笔记，如有粗鄙之处，还请见谅～</p>
+<p>阅读本博客前，请确定了解了以前的blog：<br><a href="http://www.jianshu.com/p/1e84cba1bc90" target="_blank" rel="external">Docker 自修笔记（五）</a></p>
+<h1 id="Docker的数据管理"><a href="#Docker的数据管理" class="headerlink" title="Docker的数据管理"></a>Docker的数据管理</h1><h2 id="Data-volumes（数据卷）"><a href="#Data-volumes（数据卷）" class="headerlink" title="Data volumes（数据卷）"></a>Data volumes（数据卷）</h2><p>Data volumes 是一种特别设计的目录，绕开了联合文件系统。</p>
+<ul>
+<li>Volumes在容器创建时就初始化，如果容器的父映像包含指定的挂载点上的数据，则在卷初始化时将现有数据复制到新卷中。</li>
+<li>数据卷可以被容器共享。</li>
+<li>可以对数据卷直接进行变更操作。</li>
+<li>更新镜像时，数据卷变更不会同步。</li>
+<li>就算容器被删了，数据卷还是会保存下来。</li>
+</ul>
+<h2 id="添加一个数据卷"><a href="#添加一个数据卷" class="headerlink" title="添加一个数据卷"></a>添加一个数据卷</h2><p>Docker通过<code>docker create</code>和<code>docker run</code>添加<code>-v</code>标签来创建数据卷。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run -d -P --name web -v /webapp training/webapp python app.py</div></pre></td></tr></table></figure></p>
+<p>这样就在容器里的<code>/webapp</code>位置创建了一个新的数据卷。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">也可以在Dockerfile里使用VOLUME直接添加数据卷。</div></pre></td></tr></table></figure></p>
+<h2 id="定位数据卷"><a href="#定位数据卷" class="headerlink" title="定位数据卷"></a>定位数据卷</h2><p>需要定位数据卷时，可以直接通过命令查看。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$ docker inspect web</div><div class="line"></div><div class="line">...</div><div class="line">&quot;Mounts&quot;: [</div><div class="line">    &#123;</div><div class="line">        &quot;Name&quot;: &quot;fac362...80535&quot;,</div><div class="line">        &quot;Source&quot;: &quot;/var/lib/docker/volumes/fac362...80535/_data&quot;, //主机地址</div><div class="line">        &quot;Destination&quot;: &quot;/webapp&quot;, //容器</div><div class="line">        &quot;Driver&quot;: &quot;local&quot;,</div><div class="line">        &quot;Mode&quot;: &quot;&quot;,</div><div class="line">        &quot;RW&quot;: true,</div><div class="line">        &quot;Propagation&quot;: &quot;&quot;</div><div class="line">    &#125;</div><div class="line">]</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h2 id="将一个主机目录设置为数据卷"><a href="#将一个主机目录设置为数据卷" class="headerlink" title="将一个主机目录设置为数据卷"></a>将一个主机目录设置为数据卷</h2><p>Docker同样可以通过<code>-v</code>标签将已有的主机目录设置为数据卷。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run -d -P --name web -v /src/webapp:/webapp training/webapp python app.py</div></pre></td></tr></table></figure></p>
+<p>其中<code>/src/webapp</code>就是主机目录，加载到容器中<code>/webapp</code>，并运行起来。如果容器中的<code>/webapp</code>已经存在，这个命令不会覆盖，仅仅是在原文件基础上添加一个读写层来运行，在这个数据卷被删除后，原有的文件会恢复访问。</p>
+<ul>
+<li>容器目录必须是绝对路径，而主机目录可以是相对或绝对路径。</li>
+<li>数据卷的名称<code>name</code>必须符合规则：<code>^[a-z0-9][a-z0-9\.-_]*$</code>。</li>
+<li>容器绝对路径必须以<code>/</code>开头。</li>
+</ul>
+<p>MAC<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -v /Users/&lt;path&gt;:/&lt;container path&gt; ...</div></pre></td></tr></table></figure></p>
+<p>Windows<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -v c:\&lt;path&gt;:c:\&lt;container path&gt;</div></pre></td></tr></table></figure></p>
+<p>Virtual machine<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">虚拟机等文件系统则需要设置文件共享才能使用 -v 命令</div></pre></td></tr></table></figure></p>
+<p>可以通过命令来修改数据卷的读写模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run -d -P --name web -v /src/webapp:/webapp:ro training/webapp python app.py</div></pre></td></tr></table></figure></p>
+<p>也可以通过<code>cached</code>降低数据卷的一致性需求来提高性能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run -d -P --name web -v /src/webapp:/webapp:cached training/webapp python app.py</div></pre></td></tr></table></figure></p>
+<h2 id="安装一个共享数据卷"><a href="#安装一个共享数据卷" class="headerlink" title="安装一个共享数据卷"></a>安装一个共享数据卷</h2><p>在容器中创建一个名次数据卷。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ docker run -d -P \</div><div class="line">  --volume-driver=convoy \ //如果不需要使用convoy，可以使用local</div><div class="line">  -v my-named-volume:/webapp \</div><div class="line">  --name web training/webapp python app.py</div></pre></td></tr></table></figure>
+<p>直接创建数据卷，附上<a href="https://docs.docker.com/engine/extend/legacy_plugins/" target="_blank" rel="external">docker插件</a>。其中传参的方式是<code>o=&lt;key&gt;=&lt;value&gt;</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ docker volume create -d convoy --opt o=size=20GB my-named-volume</div><div class="line"></div><div class="line">$ docker run -d -P \</div><div class="line">  -v my-named-volume:/webapp \</div><div class="line">  --name web training/webapp python app.py</div></pre></td></tr></table></figure>
+<h2 id="数据卷标记"><a href="#数据卷标记" class="headerlink" title="数据卷标记"></a>数据卷标记</h2><p>标记<code>:z</code>表示数据卷可以背多个容器共享。<br>标记<code>:Z</code>表示数据卷不能共享，是容器专用的私有卷。</p>
+<h2 id="将一个文件挂载为容器数据卷"><a href="#将一个文件挂载为容器数据卷" class="headerlink" title="将一个文件挂载为容器数据卷"></a>将一个文件挂载为容器数据卷</h2><p><code>-v</code>也可以将单个文件挂载到容器作为数据卷。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run --rm -it -v ~/.bash_history:/root/.bash_history ubuntu /bin/bash</div></pre></td></tr></table></figure>
+<h2 id="创建并部署数据卷容器"><a href="#创建并部署数据卷容器" class="headerlink" title="创建并部署数据卷容器"></a>创建并部署数据卷容器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ docker create -v /dbdata --name dbstore training/postgres /bin/true</div><div class="line"></div><div class="line">$ docker run -d --volumes-from dbstore --name db1 training/postgres</div><div class="line">$ docker run -d --volumes-from dbstore --name db2 training/postgres</div><div class="line"></div><div class="line">$ docker run -d --name db3 --volumes-from db1 training/postgres</div></pre></td></tr></table></figure>
+<p>如果需要删除容器同时删除挂载的数据卷，则要使用<code>docker rm -v</code>,否则该数据卷就会变为无关联<code>dangling</code>数据卷，可以通过<code>docker volume ls -f dangling=true</code>查询到这些数据卷。</p>
+<h2 id="删除数据卷"><a href="#删除数据卷" class="headerlink" title="删除数据卷"></a>删除数据卷</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run --rm -v /foo -v awesome:/bar busybox top</div></pre></td></tr></table></figure>
+<p>删除所有没有使用和挂载的数据卷并释放空间：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker volume prune</div></pre></td></tr></table></figure>
+<h2 id="列出所有数据卷"><a href="#列出所有数据卷" class="headerlink" title="列出所有数据卷"></a>列出所有数据卷</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker volume ls</div></pre></td></tr></table></figure>
+<h2 id="备份恢复和迁移数据卷"><a href="#备份恢复和迁移数据卷" class="headerlink" title="备份恢复和迁移数据卷"></a>备份恢复和迁移数据卷</h2><p>如果需要做到备份恢复和迁移数据卷，将需要用到<code>--volumes-from</code>，举个栗子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run --rm --volumes-from dbstore -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar /dbdata</div></pre></td></tr></table></figure>
+<p>这个栗子梨，创建了一个新的容器并启动，挂载了dbstore容器的数据卷，部署在本地目录<code>/backup</code>，最后，通过<code>tar</code>备份了<code>dbdata</code>的数据卷到<code>/backup/backup.tar</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ docker run -v /dbdata --name dbstore2 ubuntu /bin/bash</div><div class="line"></div><div class="line">$ docker run --rm --volumes-from dbstore2 -v $(pwd):/backup ubuntu bash -c &quot;cd /dbdata &amp;&amp; tar xvf /backup/backup.tar --strip 1&quot;</div></pre></td></tr></table></figure>
+<hr>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/08/06/Docker-自修笔记（六）——-示例学习/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/06/Docker-自修笔记-附-——-命令汇总/" class="archive-article-date">
-  	<time datetime="2017-08-06T02:35:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-06</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/06/Docker-自修笔记-附-——-命令汇总/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Docker 自修笔记 附 —— 命令汇总</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/06/Docker-自修笔记-附-——-命令汇总/">Docker 自修笔记 附 —— 命令汇总</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/06/Docker-自修笔记（五）——-示例学习/" class="archive-article-date">
-  	<time datetime="2017-08-06T02:34:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/06/Docker-自修笔记（五）——-示例学习/">Docker 自修笔记（五）—— 示例学习</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/06/Docker-自修笔记（四）/" class="archive-article-date">
-  	<time datetime="2017-08-06T02:34:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/06/Docker-自修笔记（四）/">Docker 自修笔记（四）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/06/Docker-自修笔记（三）/" class="archive-article-date">
-  	<time datetime="2017-08-06T02:33:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/06/Docker-自修笔记（三）/">Docker 自修笔记（三）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/06/Docker-自修笔记（二）/" class="archive-article-date">
-  	<time datetime="2017-08-06T02:32:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/06/Docker-自修笔记（二）/">Docker 自修笔记（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/06/Docker-自修笔记（一）/" class="archive-article-date">
-  	<time datetime="2017-08-06T02:31:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/06/Docker-自修笔记（一）/">Docker 自修笔记（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/06/Docker-自修笔记-附-——-分享docker镜像/" class="archive-article-date">
-  	<time datetime="2017-08-06T02:30:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/06/Docker-自修笔记-附-——-分享docker镜像/">Docker 自修笔记 附 —— 分享docker镜像</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/04/hello-world/" class="archive-article-date">
-  	<time datetime="2017-08-04T12:36:28.529Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/04/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/04/Hey-babe/" class="archive-article-date">
-  	<time datetime="2017-08-04T09:27:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/04/Hey-babe/">Hey babe</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -472,8 +365,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
