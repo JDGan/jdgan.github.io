@@ -148,27 +148,69 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Docker-自修笔记-附-——-命令汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Docker-自修笔记（六）——-示例学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/06/Docker-自修笔记-附-——-命令汇总/">Docker 自修笔记 附 —— 命令汇总</a>
+      <a class="article-title" href="/2017/08/06/Docker-自修笔记（六）——-示例学习/">Docker 自修笔记（六）—— 示例学习</a>
     </h1>
   
 
         
-        <a href="/2017/08/06/Docker-自修笔记-附-——-命令汇总/" class="archive-article-date">
-  	<time datetime="2017-08-06T02:35:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-06</time>
+        <a href="/2017/08/06/Docker-自修笔记（六）——-示例学习/" class="archive-article-date">
+  	<time datetime="2017-08-06T02:37:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line">Usage:	docker COMMAND</div><div class="line"></div><div class="line">A self-sufficient runtime for containers</div><div class="line"></div><div class="line">Options:</div><div class="line">      --config string      Location of client config files (default &quot;/Users/jdg/.docker&quot;)</div><div class="line">  -D, --debug              Enable debug mode</div><div class="line">      --help               Print usage</div><div class="line">  -H, --host list          Daemon socket(s) to connect to</div><div class="line">  -l, --log-level string   Set the logging level (&quot;debug&quot;|&quot;info&quot;|&quot;warn&quot;|&quot;error&quot;|&quot;fatal&quot;) (default</div><div class="line">                           &quot;info&quot;)</div><div class="line">      --tls                Use TLS; implied by --tlsverify</div><div class="line">      --tlscacert string   Trust certs signed only by this CA (default &quot;/Users/jdg/.docker/ca.pem&quot;)</div><div class="line">      --tlscert string     Path to TLS certificate file (default &quot;/Users/jdg/.docker/cert.pem&quot;)</div><div class="line">      --tlskey string      Path to TLS key file (default &quot;/Users/jdg/.docker/key.pem&quot;)</div><div class="line">      --tlsverify          Use TLS and verify the remote</div><div class="line">  -v, --version            Print version information and quit</div><div class="line"></div><div class="line">Management Commands:</div><div class="line">  checkpoint  Manage checkpoints</div><div class="line">  config      Manage Docker configs</div><div class="line">  container   Manage containers</div><div class="line">  image       Manage images</div><div class="line">  network     Manage networks</div><div class="line">  node        Manage Swarm nodes</div><div class="line">  plugin      Manage plugins</div><div class="line">  secret      Manage Docker secrets</div><div class="line">  service     Manage services</div><div class="line">  stack       Manage Docker stacks</div><div class="line">  swarm       Manage Swarm</div><div class="line">  system      Manage Docker</div><div class="line">  volume      Manage volumes</div><div class="line"></div><div class="line">Commands:</div><div class="line">  attach      Attach local standard input, output, and error streams to a running container</div><div class="line">  build       Build an image from a Dockerfile</div><div class="line">  commit      Create a new image from a container&apos;s changes</div><div class="line">  cp          Copy files/folders between a container and the local filesystem</div><div class="line">  create      Create a new container</div><div class="line">  deploy      Deploy a new stack or update an existing stack</div><div class="line">  diff        Inspect changes to files or directories on a container&apos;s filesystem</div><div class="line">  events      Get real time events from the server</div><div class="line">  exec        Run a command in a running container</div><div class="line">  export      Export a container&apos;s filesystem as a tar archive</div><div class="line">  history     Show the history of an image</div><div class="line">  images      List images</div><div class="line">  import      Import the contents from a tarball to create a filesystem image</div><div class="line">  info        Display system-wide information</div><div class="line">  inspect     Return low-level information on Docker objects</div><div class="line">  kill        Kill one or more running containers</div><div class="line">  load        Load an image from a tar archive or STDIN</div><div class="line">  login       Log in to a Docker registry</div><div class="line">  logout      Log out from a Docker registry</div><div class="line">  logs        Fetch the logs of a container</div><div class="line">  pause       Pause all processes within one or more containers</div><div class="line">  port        List port mappings or a specific mapping for the container</div><div class="line">  ps          List containers</div><div class="line">  pull        Pull an image or a repository from a registry</div><div class="line">  push        Push an image or a repository to a registry</div><div class="line">  rename      Rename a container</div><div class="line">  restart     Restart one or more containers</div><div class="line">  rm          Remove one or more containers</div><div class="line">  rmi         Remove one or more images</div><div class="line">  run         Run a command in a new container</div><div class="line">  save        Save one or more images to a tar archive (streamed to STDOUT by default)</div><div class="line">  search      Search the Docker Hub for images</div><div class="line">  start       Start one or more stopped containers</div><div class="line">  stats       Display a live stream of container(s) resource usage statistics</div><div class="line">  stop        Stop one or more running containers</div><div class="line">  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE</div><div class="line">  top         Display the running processes of a container</div><div class="line">  unpause     Unpause all processes within one or more containers</div><div class="line">  update      Update configuration of one or more containers</div><div class="line">  version     Show the Docker version information</div><div class="line">  wait        Block until one or more containers stop, then print their exit codes</div></pre></td></tr></table></figure>
+        <p>本博客为JDGan自修Docker的笔记，如有粗鄙之处，还请见谅～</p>
+<p>阅读本博客前，请确定了解了以前的blog：<br><a href="http://www.jianshu.com/p/1e84cba1bc90" target="_blank" rel="external">Docker 自修笔记（五）</a></p>
+<h1 id="Docker的数据管理"><a href="#Docker的数据管理" class="headerlink" title="Docker的数据管理"></a>Docker的数据管理</h1><h2 id="Data-volumes（数据卷）"><a href="#Data-volumes（数据卷）" class="headerlink" title="Data volumes（数据卷）"></a>Data volumes（数据卷）</h2><p>Data volumes 是一种特别设计的目录，绕开了联合文件系统。</p>
+<ul>
+<li>Volumes在容器创建时就初始化，如果容器的父映像包含指定的挂载点上的数据，则在卷初始化时将现有数据复制到新卷中。</li>
+<li>数据卷可以被容器共享。</li>
+<li>可以对数据卷直接进行变更操作。</li>
+<li>更新镜像时，数据卷变更不会同步。</li>
+<li>就算容器被删了，数据卷还是会保存下来。</li>
+</ul>
+<h2 id="添加一个数据卷"><a href="#添加一个数据卷" class="headerlink" title="添加一个数据卷"></a>添加一个数据卷</h2><p>Docker通过<code>docker create</code>和<code>docker run</code>添加<code>-v</code>标签来创建数据卷。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run -d -P --name web -v /webapp training/webapp python app.py</div></pre></td></tr></table></figure></p>
+<p>这样就在容器里的<code>/webapp</code>位置创建了一个新的数据卷。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">也可以在Dockerfile里使用VOLUME直接添加数据卷。</div></pre></td></tr></table></figure></p>
+<h2 id="定位数据卷"><a href="#定位数据卷" class="headerlink" title="定位数据卷"></a>定位数据卷</h2><p>需要定位数据卷时，可以直接通过命令查看。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$ docker inspect web</div><div class="line"></div><div class="line">...</div><div class="line">&quot;Mounts&quot;: [</div><div class="line">    &#123;</div><div class="line">        &quot;Name&quot;: &quot;fac362...80535&quot;,</div><div class="line">        &quot;Source&quot;: &quot;/var/lib/docker/volumes/fac362...80535/_data&quot;, //主机地址</div><div class="line">        &quot;Destination&quot;: &quot;/webapp&quot;, //容器</div><div class="line">        &quot;Driver&quot;: &quot;local&quot;,</div><div class="line">        &quot;Mode&quot;: &quot;&quot;,</div><div class="line">        &quot;RW&quot;: true,</div><div class="line">        &quot;Propagation&quot;: &quot;&quot;</div><div class="line">    &#125;</div><div class="line">]</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h2 id="将一个主机目录设置为数据卷"><a href="#将一个主机目录设置为数据卷" class="headerlink" title="将一个主机目录设置为数据卷"></a>将一个主机目录设置为数据卷</h2><p>Docker同样可以通过<code>-v</code>标签将已有的主机目录设置为数据卷。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run -d -P --name web -v /src/webapp:/webapp training/webapp python app.py</div></pre></td></tr></table></figure></p>
+<p>其中<code>/src/webapp</code>就是主机目录，加载到容器中<code>/webapp</code>，并运行起来。如果容器中的<code>/webapp</code>已经存在，这个命令不会覆盖，仅仅是在原文件基础上添加一个读写层来运行，在这个数据卷被删除后，原有的文件会恢复访问。</p>
+<ul>
+<li>容器目录必须是绝对路径，而主机目录可以是相对或绝对路径。</li>
+<li>数据卷的名称<code>name</code>必须符合规则：<code>^[a-z0-9][a-z0-9\.-_]*$</code>。</li>
+<li>容器绝对路径必须以<code>/</code>开头。</li>
+</ul>
+<p>MAC<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -v /Users/&lt;path&gt;:/&lt;container path&gt; ...</div></pre></td></tr></table></figure></p>
+<p>Windows<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -v c:\&lt;path&gt;:c:\&lt;container path&gt;</div></pre></td></tr></table></figure></p>
+<p>Virtual machine<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">虚拟机等文件系统则需要设置文件共享才能使用 -v 命令</div></pre></td></tr></table></figure></p>
+<p>可以通过命令来修改数据卷的读写模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run -d -P --name web -v /src/webapp:/webapp:ro training/webapp python app.py</div></pre></td></tr></table></figure></p>
+<p>也可以通过<code>cached</code>降低数据卷的一致性需求来提高性能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run -d -P --name web -v /src/webapp:/webapp:cached training/webapp python app.py</div></pre></td></tr></table></figure></p>
+<h2 id="安装一个共享数据卷"><a href="#安装一个共享数据卷" class="headerlink" title="安装一个共享数据卷"></a>安装一个共享数据卷</h2><p>在容器中创建一个名次数据卷。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ docker run -d -P \</div><div class="line">  --volume-driver=convoy \ //如果不需要使用convoy，可以使用local</div><div class="line">  -v my-named-volume:/webapp \</div><div class="line">  --name web training/webapp python app.py</div></pre></td></tr></table></figure>
+<p>直接创建数据卷，附上<a href="https://docs.docker.com/engine/extend/legacy_plugins/" target="_blank" rel="external">docker插件</a>。其中传参的方式是<code>o=&lt;key&gt;=&lt;value&gt;</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ docker volume create -d convoy --opt o=size=20GB my-named-volume</div><div class="line"></div><div class="line">$ docker run -d -P \</div><div class="line">  -v my-named-volume:/webapp \</div><div class="line">  --name web training/webapp python app.py</div></pre></td></tr></table></figure>
+<h2 id="数据卷标记"><a href="#数据卷标记" class="headerlink" title="数据卷标记"></a>数据卷标记</h2><p>标记<code>:z</code>表示数据卷可以背多个容器共享。<br>标记<code>:Z</code>表示数据卷不能共享，是容器专用的私有卷。</p>
+<h2 id="将一个文件挂载为容器数据卷"><a href="#将一个文件挂载为容器数据卷" class="headerlink" title="将一个文件挂载为容器数据卷"></a>将一个文件挂载为容器数据卷</h2><p><code>-v</code>也可以将单个文件挂载到容器作为数据卷。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run --rm -it -v ~/.bash_history:/root/.bash_history ubuntu /bin/bash</div></pre></td></tr></table></figure>
+<h2 id="创建并部署数据卷容器"><a href="#创建并部署数据卷容器" class="headerlink" title="创建并部署数据卷容器"></a>创建并部署数据卷容器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ docker create -v /dbdata --name dbstore training/postgres /bin/true</div><div class="line"></div><div class="line">$ docker run -d --volumes-from dbstore --name db1 training/postgres</div><div class="line">$ docker run -d --volumes-from dbstore --name db2 training/postgres</div><div class="line"></div><div class="line">$ docker run -d --name db3 --volumes-from db1 training/postgres</div></pre></td></tr></table></figure>
+<p>如果需要删除容器同时删除挂载的数据卷，则要使用<code>docker rm -v</code>,否则该数据卷就会变为无关联<code>dangling</code>数据卷，可以通过<code>docker volume ls -f dangling=true</code>查询到这些数据卷。</p>
+<h2 id="删除数据卷"><a href="#删除数据卷" class="headerlink" title="删除数据卷"></a>删除数据卷</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run --rm -v /foo -v awesome:/bar busybox top</div></pre></td></tr></table></figure>
+<p>删除所有没有使用和挂载的数据卷并释放空间：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker volume prune</div></pre></td></tr></table></figure>
+<h2 id="列出所有数据卷"><a href="#列出所有数据卷" class="headerlink" title="列出所有数据卷"></a>列出所有数据卷</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker volume ls</div></pre></td></tr></table></figure>
+<h2 id="备份恢复和迁移数据卷"><a href="#备份恢复和迁移数据卷" class="headerlink" title="备份恢复和迁移数据卷"></a>备份恢复和迁移数据卷</h2><p>如果需要做到备份恢复和迁移数据卷，将需要用到<code>--volumes-from</code>，举个栗子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run --rm --volumes-from dbstore -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar /dbdata</div></pre></td></tr></table></figure>
+<p>这个栗子梨，创建了一个新的容器并启动，挂载了dbstore容器的数据卷，部署在本地目录<code>/backup</code>，最后，通过<code>tar</code>备份了<code>dbdata</code>的数据卷到<code>/backup/backup.tar</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ docker run -v /dbdata --name dbstore2 ubuntu /bin/bash</div><div class="line"></div><div class="line">$ docker run --rm --volumes-from dbstore2 -v $(pwd):/backup ubuntu bash -c &quot;cd /dbdata &amp;&amp; tar xvf /backup/backup.tar --strip 1&quot;</div></pre></td></tr></table></figure>
+<hr>
 
       
 
@@ -192,7 +234,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/06/Docker-自修笔记-附-——-命令汇总/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/08/06/Docker-自修笔记（六）——-示例学习/">展开全文 >></a>
         </p>
       
 
@@ -224,7 +266,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 
@@ -328,6 +370,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">个人品质</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Carthage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">swift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SDK</a>
               </li>
             
             <div class="clearfix"></div>

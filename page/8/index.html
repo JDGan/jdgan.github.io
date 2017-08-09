@@ -148,20 +148,20 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Docker-自修笔记（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Docker-自修笔记（三）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/06/Docker-自修笔记（二）/">Docker 自修笔记（二）</a>
+      <a class="article-title" href="/2017/08/06/Docker-自修笔记（三）/">Docker 自修笔记（三）</a>
     </h1>
   
 
         
-        <a href="/2017/08/06/Docker-自修笔记（二）/" class="archive-article-date">
-  	<time datetime="2017-08-06T02:32:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-06</time>
+        <a href="/2017/08/06/Docker-自修笔记（三）/" class="archive-article-date">
+  	<time datetime="2017-08-06T02:33:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-06</time>
 </a>
         
       </header>
@@ -169,31 +169,18 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>本博客为JDGan自修Docker的笔记，如有粗鄙之处，还请见谅～</p>
-<p>阅读本博客前，请确定掌握了前一篇blog：<a href="http://www.jianshu.com/p/3fa41d46c365" target="_blank" rel="external">Docker配置及安装</a>，最好顺便还掌握了<a href="http://www.jianshu.com/p/433aeef83b7f" target="_blank" rel="external">分享docker镜像</a>。</p>
-<h1 id="服务（services）"><a href="#服务（services）" class="headerlink" title="服务（services）"></a>服务（services）</h1><p>在一个发布的产品里，不同的app被我们称为“服务”(service)，前两篇blog里的<code>friendlyhello</code>就是一个服务。在一般的情况下，建议是每一个容器有且仅有运行一个镜像，也就是一个服务，以实现服务之间的影响最小化。</p>
-<p>一个实际的应用里，我们可能需要运行很多很多个服务，需要实现多个服务之间的数据传输，资源共享。那么我们就要对这些服务进行管理，而docker平台就可以非常便利的对服务进行管理和维护。</p>
-<p>##容器行为配置文件</p>
-<p>为了实现对容器和服务的管理，docker需要用到<code>docker-compose.yml</code>。<a href="http://baike.baidu.com/link?url=s9pWCZP1xFX9J27keIg3YJHn_4b91uiZEN9gpTPSsJD4aRYeyfsHegTVw6cwuSaRL4Qkc30AtOxQkb_iKXE6Jq" target="_blank" rel="external">[YAML]</a></p>
-<p>这个文件的内容一般如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">version: &quot;3&quot;</div><div class="line">services:</div><div class="line">  web:</div><div class="line">    image: $username/$repository:$tag</div><div class="line">    deploy:</div><div class="line">      replicas: 5</div><div class="line">      resources:</div><div class="line">        limits:</div><div class="line">          cpus: &quot;0.1&quot;</div><div class="line">          memory: 50M</div><div class="line">      restart_policy:</div><div class="line">        condition: on-failure</div><div class="line">    ports:</div><div class="line">      - &quot;80:80&quot;</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">networks:</div><div class="line">  webnet:</div></pre></td></tr></table></figure></p>
-<p>下面解释一下上面文件的描述：</p>
-<ul>
-<li>版本号<code>3</code>指的是yaml版本为3。</li>
-<li>通过<code>$username/$repository:$tag</code>获取app镜像（执行pull）。</li>
-<li>运行5个该app镜像容器作为一个服务名为<code>web</code>，并限制每个镜像的cpu最大使用率10%，内存最大限制50MB。</li>
-<li>设置重启策略为：失败后马上重启。</li>
-<li>映射端口80到服务<code>web</code>的端口80。</li>
-<li>所有<code>web</code>的容器共享端口80，并配置一个名为<code>webnet</code>负载均衡覆盖网络。</li>
-<li>使用默认配置定义负载均衡覆盖网络<code>webnet</code>。</li>
-</ul>
-<p>新建文件<code>docker-compose.yml</code>，并放到项目目录下。</p>
-<h2 id="运行群服务"><a href="#运行群服务" class="headerlink" title="运行群服务"></a>运行群服务</h2><p>在部署运行群服务之前，首先运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker swarm init</div></pre></td></tr></table></figure></p>
-<p>然后就可以进行部署：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ docker stack deploy -c docker-compose.yml getstartedlab</div><div class="line"></div><div class="line">Creating network getstartedlab_webnet</div><div class="line">Creating service getstartedlab_web</div></pre></td></tr></table></figure></p>
-<p>o(^▽^)o <em>启动成功！</em> 执行ps命令查看。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ docker stack ps getstartedlab</div><div class="line">ID                  NAME                  IMAGE                NODE                DESIRED STATE       CURRENT STATE           ERROR               PORTS</div><div class="line">muc0g4py7u6g        getstartedlab_web.1   username/test:share   moby                Running             Running 3 seconds ago                       </div><div class="line">sil8jzmjqxpt        getstartedlab_web.2   username/test:share   moby                Running             Running 2 seconds ago                       </div><div class="line">vryfp1iz6e5a        getstartedlab_web.3   username/test:share   moby                Running             Running 2 seconds ago                       </div><div class="line">nb3bnumfosed        getstartedlab_web.4   username/test:share   moby                Running             Running 3 seconds ago                       </div><div class="line">khoxuflpcqgb        getstartedlab_web.5   username/test:share   moby                Running             Running 3 seconds ago</div></pre></td></tr></table></figure>
-<h2 id="增减容器"><a href="#增减容器" class="headerlink" title="增减容器"></a>增减容器</h2><p>docker可以实现动态增减镜像，避免了增删容器时出现服务不可用的情况。修改的方法就是直接修改配置文件<code>docker-compose.yml</code>，修改完    <code>replicas</code>的值后，直接再次运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker stack deploy -c docker-compose.yml getstartedlab</div></pre></td></tr></table></figure></p>
-<p>docker就会自动更新容器的数量。<br>例如上面的栗子中修改<code>replicas: 2</code>,再次运行<code>docker stack ps</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ docker stack ps getstartedlab</div><div class="line">ID                  NAME                  IMAGE                NODE                DESIRED STATE       CURRENT STATE            ERROR               PORTS</div><div class="line">muc0g4py7u6g        getstartedlab_web.1   username/test:share   moby                Running             Running 13 minutes ago                       </div><div class="line">nb3bnumfosed        getstartedlab_web.4   username/test:share   moby                Running             Running 13 minutes ago</div></pre></td></tr></table></figure></p>
-<p>o(^▽^)o <em>简单快捷，舒适平滑。</em></p>
-<h2 id="关闭群服务"><a href="#关闭群服务" class="headerlink" title="关闭群服务"></a>关闭群服务</h2><p>执行<code>docker stack rm getstartedlab</code>直接关闭app。<br>需要关闭群服务则需要再执行<code>docker swarm leave --force</code>。<br>可以通过<code>docker node ls</code>查看群服务是否还在运行。</p>
+<p>阅读本博客前，请确定掌握了前一篇blog：<a href="http://blog.csdn.net/jamessbond/article/details/75114984" target="_blank" rel="external">docker 服务</a>。</p>
+<h1 id="Docker-集群"><a href="#Docker-集群" class="headerlink" title="Docker 集群"></a>Docker 集群</h1><p><strong>Docker 里，群是一组运行着 Docker 的计算机，再把这个运行着的群，加入到一个群组里，集中起来管理，就是Docker 的集群。这样一个一个的群，称为 nodes，而发起并集中管理的 node，称为 swarm manager，其他 node 称为 worker。worker 没有操作集群的权限。</strong></p>
+<h2 id="配置集群"><a href="#配置集群" class="headerlink" title="配置集群"></a>配置集群</h2><p>作为 swarm manager 启动集群<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker swarm init</div></pre></td></tr></table></figure></p>
+<p>作为 swarm manager 指定 ip 启动集群<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker swarm init --advertise-addr &lt;ip&gt;:&lt;port&gt;</div></pre></td></tr></table></figure></p>
+<p>作为 worker 加入指定集群<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker swarm join --token &lt;token&gt; &lt;ip&gt;:&lt;port&gt;</div></pre></td></tr></table></figure></p>
+<p>在 swarm manager 中查看所有 nodes<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker node ls</div></pre></td></tr></table></figure></p>
+<p>##发布 app 到集群</p>
+<p>集群启动完成以后，可以直接使用例如<a href="http://blog.csdn.net/jamessbond/article/details/75114984" target="_blank" rel="external">上一章</a>用到的<code>docker-compose.yml</code>，放到 swarm manager 的 home directory。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">version: &quot;3&quot;</div><div class="line">services:</div><div class="line">  web:</div><div class="line">    image: $username/$repository:$tag</div><div class="line">    deploy:</div><div class="line">      replicas: 5</div><div class="line">      resources:</div><div class="line">        limits:</div><div class="line">          cpus: &quot;0.1&quot;</div><div class="line">          memory: 50M</div><div class="line">      restart_policy:</div><div class="line">        condition: on-failure</div><div class="line">    ports:</div><div class="line">      - &quot;80:80&quot;</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">networks:</div><div class="line">  webnet:</div></pre></td></tr></table></figure></p>
+<p>类似的，用下面的命令部署 app<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker stack deploy -c docker-compose.yml getstartedlab</div></pre></td></tr></table></figure></p>
+<p>成功后即可查看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ docker stack ps getstartedlab</div><div class="line">ID            NAME        IMAGE              NODE   DESIRED STATE</div><div class="line">muc0g4py7u6g  test_web.1  username/repo:tag  node1  Running</div><div class="line">sil8jzmjqxpt  test_web.2  username/repo:tag  node2  Running</div><div class="line">vryfp1iz6e5a  test_web.3  username/repo:tag  node2  Running</div><div class="line">nb3bnumfosed  test_web.4  username/repo:tag  node1  Running</div><div class="line">khoxuflpcqgb  test_web.5  username/repo:tag  node2  Running</div></pre></td></tr></table></figure></p>
+<p>退出 app<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker stack rm getstartedlab</div></pre></td></tr></table></figure></p>
+<p>退出集群，集群控制器最好使用<code>--force</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker swarm leave --force</div></pre></td></tr></table></figure></p>
 <hr>
 
       
@@ -218,7 +205,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/06/Docker-自修笔记（二）/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/08/06/Docker-自修笔记（三）/">展开全文 >></a>
         </p>
       
 
@@ -250,7 +237,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
     </nav>
   
 
@@ -354,6 +341,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">个人品质</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Carthage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">swift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SDK</a>
               </li>
             
             <div class="clearfix"></div>
